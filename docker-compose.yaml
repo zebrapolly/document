@@ -1,0 +1,12 @@
+version: '3'
+services:
+  api:
+    build: ./api
+    ports:
+      - "4000:4000/tcp"
+    volumes: 
+      - ./api/:/opt/api/
+  postgres: 
+    image: postgres:9.6
+    ports :
+      - "5435:5432/tcp"
