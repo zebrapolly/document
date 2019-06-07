@@ -41,7 +41,6 @@ class DocumentStorage {
   async updateDocument(params, payload) {
     const res = await this.debitModel.update(payload, {where: params});
     return res;
-    console.log(res);
   }
 }
 

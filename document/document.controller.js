@@ -6,6 +6,8 @@ class DocumentController {
     this.router = router;
     this.service = new DocumentService();
 
+    this.router.post('/documents/recognize', (ctx, next) => this.recognizeDocument(ctx, next));
+
     this.router.get('/documents/:id', this.getDocumentById);
 
     this.router.get('/documents', async (ctx, next) => {
@@ -53,6 +55,18 @@ class DocumentController {
     } else {
       ctx.response.status = 404;
     }
+  }
+
+  async recognizeDocument(ctx, next) {
+    // const {files, fields} = ctx.request.body;
+    console.log(JSON.stringify(ctx.request.files));
+
+    const res = await this.service.recognizeDocuments({
+      documentId: ctx.request.body.documentId,
+      files: ctx.request.files.files,
+    });
+    ctx.body = {res};
+    // const res = await
   }
 }
 

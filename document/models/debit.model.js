@@ -22,7 +22,7 @@ DebitModel.init({
 }, {
   sequelize: dbConnection,
   modelName: 'DebitModel',
-  schema: 'document',
+  schema: 'public',
   tableName: 'debit_note',
 });
 

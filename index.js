@@ -3,7 +3,7 @@ const Koa = require('koa');
 const WebSocket = require('ws');
 const app = new Koa();
 const port = process.env.PORT || 4000;
-const bodyParser = require('koa-bodyparser');
+const koaBody = require('koa-body');
 const server = http.createServer(app.callback());
 const wss = new WebSocket.Server({server});
 const router = require('./router');
@@ -11,7 +11,13 @@ const router = require('./router');
 require('./document/document.controller');
 
 app
-    .use(bodyParser())
+    .use(koaBody({
+      // formidable: {
+      //   // uploadDir: __dirname + '/public/uploads', // directory where files will be uploaded
+      //   // keepExtensions: true, // keep file extension on upload
+      // },
+      multipart: true,
+    }))
     .use(router.routes())
     .use(router.allowedMethods());
 
