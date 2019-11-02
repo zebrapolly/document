@@ -16,7 +16,7 @@
     "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",
     "pg": "^7.11.0",
-    "sequelize": "^5.8.7",
+    "sequelize": "^5.15.1",
     "uuid": "^3.3.2",
     "ws": "^7.0.0"
   },
